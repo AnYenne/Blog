@@ -6,7 +6,7 @@ const PostSchema = new mongoose.Schema({
     description: String,
     content: String,
     create_at: Date,
-    image: {type: Array},
+    images: {type: Array},
 },{collection: 'posts'})
 
 module.exports = mongoose.model('posts', PostSchema, "posts")
