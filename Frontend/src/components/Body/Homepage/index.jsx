@@ -3,7 +3,14 @@ import ListPost from "../ListPost"
 import Footer from "../../Footer"
 
 const Homepage = () => {
-      
+    
+    const handleScrollBottom = () => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        })
+    }
+
     return(
         <Box>
             <Box sx={{color: 'orange', paddingLeft: '24px', paddingRight:'24px', display:{xs: 'block', md: 'flex'}, alignItems:{xs: 'block', md: 'center'}, justifyContent:{xs:'none', md:'space-between'}}}>
@@ -13,7 +20,7 @@ const Homepage = () => {
                         
                         <Stack direction='row' sx={{textAlign:'center', borderRadius:'15px', background:'#060842', width:'300px' , fontSize:'30px',color:'#FFA500', fontFamily:'Nunito', padding: '12px', display:'flex', alignItems:'center', justifyContent:'center'}}> 
                             
-                            <Button sx={{color:'#FFA500', fontFamily:'Nunito', fontWeight:'800'}}>Subcribe email</Button>
+                            <Button onClick={()=>handleScrollBottom()} sx={{cursor:'pointer', color:'#FFA500', fontFamily:'Nunito', fontWeight:'800'}}>Subcribe email</Button>
                             <Icon sx={{fontSize:'24px', marginLeft:'20px' }}>email</Icon>
                         </Stack>
 
