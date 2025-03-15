@@ -19,16 +19,18 @@ function Header(){
         ]
         },
         {name: 'menu3',
-        submenu: [{title: 'submenu111', link: 'https:example111'},
-            {title: 'submenu2', link: 'https:example2'},
-            {title: 'submenu3', link: 'https:example3'},
-            {title: 'submenu4', link: 'https:example4'},
+        submenu: [
+          // {title: 'submenu111', link: 'https:example111'},
+          //   {title: 'submenu2', link: 'https:example2'},
+          //   {title: 'submenu3', link: 'https:example3'},
+          //   {title: 'submenu4', link: 'https:example4'},
         ]
         },
     ]
    
     const [anchorEl, setAnchorEl] = useState((Array(menulist.length).fill(null)))
-    const [toggleSearch, SetToggleSearch] = useState(false)
+    const [toggleSearch, setToggleSearch] = useState(false)
+    const [toggleMenu, setToggleMenu] = useState(false)
 
     //hover open the submenu on Navbar
     const handleMouseEnter = (event, index) => {
@@ -48,8 +50,11 @@ function Header(){
       });
     };
     
-    const handleSearchBar = (Boolean) =>{
-      SetToggleSearch(!Boolean)
+    const handleSearchBar = (boolean) =>{
+      setToggleSearch(!boolean)
+    }
+    const handleMenuXs = (boolean) => {
+      setToggleMenu(!boolean)
     }
     
     
@@ -57,13 +62,13 @@ function Header(){
         <AppBar position='static' style={{ color:'#1D1D1D', fontFamily:'Nunito'}} >
             <Toolbar sx={{backgroundColor:'#060842'}}>
                 
-                <Typography variant='h5' component='a' href='#' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito'}}>
+                <Typography variant='h5' component='a' href='#' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito', fontSize:'30px'}}>
                     Fox Blog
                 </Typography>
 
                 <Box sx={{ display: "flex", gap: 2, p: 2, bgcolor: "#060842" }}>
                     {menulist.map((item, index) => (
-                    <Box key={index} sx={{ position: "relative", fontFamily:'Nunito' }}>
+                    <Box key={index} sx={{ position: "relative", fontFamily:'Nunito',display:{xs:'none', md:'block'} }}>
                         <Button
                         sx={{fontFamily:'Nunito', color:'orange', fontSize:'18px'}}
                         onMouseEnter={(e) => handleMouseEnter(e, index)}
@@ -79,7 +84,7 @@ function Header(){
                           onMouseLeave: () => handleMouseLeave(index),
                         }}
                       >
-                        {item.submenu.map((sub, i) => (
+                        {item.submenu &&  item.submenu.map((sub, i) => (
                           <MenuItem
                             sx={{background: '#060842'}}
                             key={i} onClick={() => handleMouseLeave(index)}>
@@ -95,16 +100,39 @@ function Header(){
                     </Box>
                   ))}
                 </Box>
-
+                
               
                 <Stack direction='row' spacing={2} sx={{display: {xs: 'block', md:'none'}}}>
-                    <Icon sx={{fontSize:{xs: 30, md: 24}, color: 'orange'}}>menu</Icon>
+                    <Icon
+                    onClick ={()=> handleMenuXs(toggleMenu)}
+                    sx={{fontSize:'40px', color: 'orange'}}>menu</Icon>
                 </Stack>
                     <Icon 
-                    sx={{fontSize:{xs: 30, md: 24}, color: 'orange', cursor: 'pointer'}}
+                    sx={{fontSize:{xs: '40px', md: '32px'}, color: 'orange', cursor: 'pointer'}}
                     onClick = {() => handleSearchBar(toggleSearch)}
                     >search</Icon>
             </Toolbar>
+            {toggleMenu && (
+                  <Box sx={{display:{xs:'flex', md: 'none'},alignItems:'flex-start', paddingLeft:'14px', flexDirection:'column',backgroundColor:'#060842', height:'300px', width:"100%"}}> 
+                  {menulist.map((menu,index) => {
+                    return(
+                      <Box>
+                        <Button
+                        variant='text' 
+                        sx={{color:'orange', fontFamily:'Nunito', fontSize:"18px"}}
+                        >
+                        {menu.name}
+                       
+                        </Button>
+                        <Box>
+                        {menu.submenu.title}
+                        </Box>
+                    </Box>
+                    )
+                  })}
+                  </Box>
+                )}
+
             {toggleSearch && <Box sx={{height:'50px' } }>
               <Input 
                 placeholder='search' 

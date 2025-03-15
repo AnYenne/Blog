@@ -1,15 +1,16 @@
 import './App.css'
-import { Container } from '@mui/material'
 import Header from './components/Header'
 import Homepage from './components/Body/Homepage'
+import Footer from './components/Footer'
 
 function App() {
 
   return (
-    <div className='App'>
-      <Header></Header>
-      <Homepage></Homepage>
-    </div>  
+      <div className='App'>
+        <Header></Header>
+        <Homepage></Homepage>
+        <Footer></Footer>
+      </div>  
   )
 }
 export default App

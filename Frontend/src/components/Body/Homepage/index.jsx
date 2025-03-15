@@ -1,6 +1,5 @@
-import { Container, Typography, Box, Stack, Icon, Button  } from "@mui/material"
+import {Typography, Box, Stack, Icon, Button} from "@mui/material"
 import ListPost from "../ListPost"
-import Footer from "../../Footer"
 
 const Homepage = () => {
     
@@ -18,9 +17,9 @@ const Homepage = () => {
                         <Typography variant="h3" component='div' sx={{color: '#333', padding:{xs:'24px 0px', md:'none'}}}> 
                         Stay Informed with the Latest Updates and Blog Highlight</Typography>
                         
-                        <Stack direction='row' sx={{textAlign:'center', borderRadius:'15px', background:'#060842', width:'300px' , fontSize:'30px',color:'#FFA500', fontFamily:'Nunito', padding: '12px', display:'flex', alignItems:'center', justifyContent:'center'}}> 
+                        <Stack onClick={()=>handleScrollBottom()} direction='row' sx={{textAlign:'center',cursor:'pointer', borderRadius:'15px', background:'#060842', width:'300px' , fontSize:'30px',color:'#FFA500', fontFamily:'Nunito', padding: '12px', display:'flex', alignItems:'center', justifyContent:'center'}}> 
                             
-                            <Button onClick={()=>handleScrollBottom()} sx={{cursor:'pointer', color:'#FFA500', fontFamily:'Nunito', fontWeight:'800'}}>Subcribe email</Button>
+                            <Button  sx={{ color:'#FFA500', fontFamily:'Nunito', fontWeight:'800'}}>Subcribe email</Button>
                             <Icon sx={{fontSize:'24px', marginLeft:'20px' }}>email</Icon>
                         </Stack>
 
@@ -40,7 +39,7 @@ const Homepage = () => {
                 <Box sx={{color: 'orange', paddingLeft: '24px', paddingRight:'24px',width: 'full-width'}}>
                     <ListPost></ListPost>
                 </Box>
-                <Footer></Footer>
+               1
             
             </Box>
     )

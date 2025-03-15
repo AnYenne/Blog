@@ -1,4 +1,4 @@
-import {Stack, Button, AppBar, Toolbar, Typography,Menu, MenuItem,Input, Box, Card, CardContent, Grid2, CardMedia, CardHeader, CardActions, Pagination} from '@mui/material'
+import {Button, Typography, Box, Card, CardContent, CardMedia,CardActions, Pagination} from '@mui/material'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -58,7 +58,8 @@ const ListPost = () => {
     // ]
 
     //pagination
-    const itemsPerPage = 6;
+    const [itemsPerPageButton, setItemsPerPageButton] = useState(8)
+    const itemsPerPage = itemsPerPageButton;
     const totalPages = Math.ceil(postsApi/itemsPerPage)
     const [page, setPage] = useState(1)
 
@@ -67,11 +68,13 @@ const ListPost = () => {
     const endIndex = startIndex + itemsPerPage;
     const currentItems = postsApi.slice(startIndex, endIndex)
 
+  
+
     return(
         <Box sx={{width: 'full-width'}}>
             <Box sx={{display:'flex', flexDirection:{xs:'column', md:'row'}, justifyContent:'space-between', alignItems:'center',color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}>
                 <Typography variant='h5' sx={{padding:{xs:'14px 0px 14px 0px'}}}>Featured blog posts</Typography>
-                <Button variant='contained' sx={{backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}>Views all posts</Button>
+                <Button onClick={()=>setItemsPerPageButton(postsApi.length)} variant='contained' sx={{backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}>Views all posts</Button>
             </Box>
             <Box sx={{paddingTop:'20px'}}>
               <Box
@@ -87,6 +90,7 @@ const ListPost = () => {
                   
 
                     <Card key={index}>
+
                       <Box sx={{display:'flex', flexDirection:'column', justifyContent:'space-around'}}>
                           <Box>
                             <CardMedia component='img'
@@ -108,7 +112,6 @@ const ListPost = () => {
                             <CardActions>
                               <Button 
                               variant='contained' 
-                              // size='small' 
                               sx={{width:{xs:'200px', lg:'120px'},padding:{xs:'14px 0', md:'none'},backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}
                               >
                                 read
