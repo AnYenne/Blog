@@ -27,10 +27,10 @@ const Footer = () => {
             </Box>
             <Box>
                 <Typography sx={{paddingTop: {xs:'24px', md:'none'}, paddingBottom:{xs:"12px"}}}>
-                STAY UPDATED WITH MORICO CONTEMPORARY JAPANESE LIFESTYLE
+                STAY UPDATED WITH ME
                 </Typography>
                 <Typography sx={{paddingBottom: '24px'}}>
-                Sign up for information, new menu, catering, horeca,…
+                Sign up for information, new tips…
                 </Typography>
                 <Input placeholder="your@email" sx={{backgroundColor:'#999', color:'#FFF',padding:{xs:'0px 14px'},borderRadius:'4px', fontFamily:'Nunito', fontWeight:'600', width:{xs:'300px'}}} />
                 <Button variant="contained" sx={{backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600', width:'160px', margin:{xs:"12px auto", md:'0px 12px'}}}>SIGN UP</Button>

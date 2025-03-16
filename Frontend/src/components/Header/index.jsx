@@ -2,6 +2,8 @@ import {Stack, Button, AppBar, Toolbar, Typography,Menu, MenuItem,Input, Box} fr
 import { useState } from 'react'
 // import {CatchingPokemonIcon, SearchIcon} from '@mui/icons-material'
 import Icon from '@mui/material/Icon'
+
+
 function Header(){
     const menulist = [
         {name: 'menu1',
@@ -116,13 +118,12 @@ function Header(){
                   <Box sx={{display:{xs:'flex', md: 'none'},alignItems:'flex-start', paddingLeft:'14px', flexDirection:'column',backgroundColor:'#060842', height:'300px', width:"100%"}}> 
                   {menulist.map((menu,index) => {
                     return(
-                      <Box>
+                      <Box key={index}>
                         <Button
                         variant='text' 
                         sx={{color:'orange', fontFamily:'Nunito', fontSize:"18px"}}
                         >
                         {menu.name}
-                       
                         </Button>
                         <Box>
                         {menu.submenu.title}

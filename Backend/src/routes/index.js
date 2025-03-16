@@ -2,6 +2,6 @@ const express = require('express');
 const app = express();
 const postRouter = require('../routes/postsRoute')
 function route(app){
-    app.get("/posts", postRouter )
+    app.use("/api/posts", postRouter )
 }
 module.exports = route

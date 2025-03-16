@@ -1,5 +1,6 @@
 import {Typography, Box, Stack, Icon, Button} from "@mui/material"
-import ListPost from "../ListPost"
+import ListPost from "../../components/ListPost"
+
 
 const Homepage = () => {
     
@@ -32,14 +33,14 @@ const Homepage = () => {
                         <img 
                         style={{width:'100%'}}
                         src="https://img.freepik.com/free-vector/taking-notes-concept-illustration_114360-1375.jpg?t=st=1741343506~exp=1741347106~hmac=7f450751df1077ec4da4d84514b36207e9e9bb944c53ba4aa63cfc1778073ebe&w=740"
-                        alt='hero image'
+                        alt='hero'
                         />
                     </Box>
                 </Box>
                 <Box sx={{color: 'orange', paddingLeft: '24px', paddingRight:'24px',width: 'full-width'}}>
                     <ListPost></ListPost>
                 </Box>
-               1
+               
             
             </Box>
     )

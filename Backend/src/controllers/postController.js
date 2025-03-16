@@ -14,6 +14,18 @@ class PostController {
         }
     }
 
+    async getPostById(req, res, next){
+        try {
+            const post = await Posts.find({_id: req.params.id})
+            res.status(200).json(post)
+            console.log("received posts", post)
+            
+        } catch (error) {
+            console.error("can't find the data")
+            res.status(500).json("server error")
+        }
+    }
+
     }
 
 module.exports = new PostController

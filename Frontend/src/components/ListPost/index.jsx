@@ -2,6 +2,7 @@ import {Button, Typography, Box, Card, CardContent, CardMedia,CardActions, Pagin
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
+
 const ListPost = () => {
     const [postsApi,setPostApi] = useState([])
     useEffect(() => {
