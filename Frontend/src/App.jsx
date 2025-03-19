@@ -5,12 +5,14 @@ import Footer from './components/Footer'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import ListPost from './components/ListPost'
 import DetailPage from './pages/DetailPage'
+import CreatePost from './pages/CreatePost'
 
 
 const router = createBrowserRouter([
   {path:'/', element: <Homepage/>},
   {path:'/posts', element: <ListPost />},
   {path:'/post/:id', element: <DetailPage />},
+  {path:'/post/create', element: <CreatePost/>},
   
 ])
 

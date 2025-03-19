@@ -64,7 +64,7 @@ function Header(){
         <AppBar position='static' style={{ color:'#1D1D1D', fontFamily:'Nunito'}} >
             <Toolbar sx={{backgroundColor:'#060842'}}>
                 
-                <Typography variant='h5' component='a' href='#' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito', fontSize:'30px'}}>
+                <Typography variant='h5' component='a' href='/' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito', fontSize:'30px'}}>
                     Fox Blog
                 </Typography>
 
