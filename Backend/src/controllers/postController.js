@@ -26,6 +26,18 @@ class PostController {
         }
     }
 
+    async createNewPost(req, res, next){
+        try {
+            const data = await Posts.create(req.body)
+            res.status(200).json(data)
+            console.log("submited successfully", data)
+            
+        } catch (error) {
+            console.error("can't submit the data")
+            res.status(500).json("server error")
+        }
+    }
+
     }
 
 module.exports = new PostController

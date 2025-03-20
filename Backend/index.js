@@ -5,6 +5,7 @@ const port = 3000;
 const cors = require('cors')
 const mongoose = require('mongoose');
 const router = require("../Backend/src/routes/index")
+const bodyParser = require('body-parser')
 //connect database
 const mongoURI = process.env.MONGO_URI
 
@@ -14,6 +15,8 @@ mongoose.connect(mongoURI)
 
 //cors config
 app.use(cors())
+
+app.use(bodyParser.json())
 
 //route
 router(app)
