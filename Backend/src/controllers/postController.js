@@ -38,6 +38,20 @@ class PostController {
         }
     }
 
+    async editPost (req, res, next){
+        try {
+           const data = await Posts.findOneAndUpdate({_id: req.params.id},req.body, {
+            new: true
+           })
+           res.status(200).json(data)
+           console.log("updated successfully", data)
+
+        } catch (error) {
+            console.error("can't update the data")
+            res.status(500).json("server error")
+        }
+    }
+
     }
 
 module.exports = new PostController

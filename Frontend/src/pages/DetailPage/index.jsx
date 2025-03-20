@@ -1,13 +1,14 @@
-import { Box, Typography, Container} from "@mui/material"
+import { Box, Typography, Container, Button} from "@mui/material"
 import axios from "axios"
 import { useEffect,useState } from "react"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 
 function DetailPage() {
     const [data, setData] = useState([])
     const {id} = useParams()
     const [content, setContent] = useState('')
+    const navigation = useNavigate()
 
     useEffect(()=>{
         axios
@@ -21,6 +22,11 @@ function DetailPage() {
     },[data])
     return (
         <Container>
+            <Box>
+                <Button variant="outlined" onClick={()=> navigation('edit', {state: {postData:data[0]} })}> 
+                    edit
+                </Button>
+            </Box>
              {data[0] && (
                 <Box sx={{display:'flex', padding:'20px 0px', justifyContent:'space-between' }}>
                     <Box sx={{ overflow:'hidden', width:'782px'}}>

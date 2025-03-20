@@ -3,10 +3,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import { useLocation } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 
 const HandlePost = (type) => {
+    const {id} = useParams()
+    const navigation = useNavigate()
     const location = useLocation();
     const oldDate = location.state.postData || null ;
 
@@ -14,6 +16,8 @@ const HandlePost = (type) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [file, setFile] = useState([])
+    var oldFile = oldDate.images;
+    const [oldFiles, setOlFiles] = useState(oldFile)
 
     useEffect(()=>{
         if(oldDate){
@@ -24,6 +28,7 @@ const HandlePost = (type) => {
             setContent('')
             setTitle('')
             setDescription('')
+            setFile([])
         }
         
    },[])
@@ -34,25 +39,31 @@ const HandlePost = (type) => {
     title,
     description,
     content,
-    images: file,
+    images: oldDate == null ? file : oldFiles
 }
     const handleSubmitPost = (event) => {
-    console.log(data)
     event.preventDefault()
-    type == 'create' && axios
+    if(oldDate === null){
+        axios
         .post('http://localhost:3000/api/posts',data)
         .then(res => {
             console.log(res);
             console.log("submit success data")
         })
         .catch((error) => console.error(error));
-    type == 'edit' && axios
-        .put('http://localhost:3000/api/posts',data)
+        console.log('CREATE')
+    } else{
+        axios
+        .put(`http://localhost:3000/api/posts/${id}`,data)
         .then(res => {
             console.log(res);
-            console.log("submit success data")
+            console.log("update success data")
         })
         .catch((error) => console.error(error));
+        console.log('edit')
+        navigation(`/post/${id}`)
+    }
+   
    }
 
     return(
@@ -80,7 +91,10 @@ const HandlePost = (type) => {
                 id="" 
                 type="file" 
                 value={file}
-                onChange ={(ev) => setFile(ev.target.value)}
+                onChange ={(ev) => {
+                    setFile(ev.target.value);
+                    setOlFiles(ev.target.value)
+                }}
                 />
             <Box sx={{width:'100%', padding: '10px 26px'}}>
                 <ReactQuill
