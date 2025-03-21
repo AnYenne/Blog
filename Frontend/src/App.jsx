@@ -13,8 +13,8 @@ const router = createBrowserRouter([
   {path:'/', element: <Homepage/>},
   {path:'/posts', element: <ListPost />},
   {path:'/post/:id', element: <DetailPage />},
-  {path:'/post/:id/edit', element: <HandlePost type='edit'/>},
-  {path:'/post/create', element: <HandlePost type='create'/>},
+  {path:'/post/:id/edit', element: <HandlePost/>},
+  {path:'/post/create', element: <HandlePost />},
   
 ])
 
