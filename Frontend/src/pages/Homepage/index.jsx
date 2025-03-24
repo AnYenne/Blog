@@ -1,5 +1,6 @@
-import {Typography, Box, Stack, Icon, Button} from "@mui/material"
 import ListPost from "../../components/ListPost"
+
+import {Typography, Box, Stack, Icon, Button} from "@mui/material"
 
 
 const Homepage = () => {

@@ -1,4 +1,6 @@
 const Posts = require('../models/posts.js');
+
+
 class PostController {
 
     //fetch all posts
@@ -6,10 +8,8 @@ class PostController {
         try{
             const allPost = await Posts.find()
             res.status(200).json(allPost)
-            console.log("received posts",allPost)
         }
         catch(error){
-            console.error("can't find")
             res.status(500).json("server error")
         }
     }
@@ -18,10 +18,8 @@ class PostController {
         try {
             const post = await Posts.find({_id: req.params.id})
             res.status(200).json(post)
-            console.log("received posts", post)
             
         } catch (error) {
-            console.error("can't find the data")
             res.status(500).json("server error")
         }
     }
@@ -30,10 +28,8 @@ class PostController {
         try {
             const data = await Posts.create(req.body)
             res.status(200).json(data)
-            console.log("submited successfully", data)
             
         } catch (error) {
-            console.error("can't submit the data")
             res.status(500).json("server error")
         }
     }
@@ -44,10 +40,8 @@ class PostController {
             new: true
            })
            res.status(200).json(data)
-           console.log("updated successfully", data)
 
         } catch (error) {
-            console.error("can't update the data")
             res.status(500).json("server error")
         }
     }

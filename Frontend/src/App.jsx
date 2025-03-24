@@ -12,9 +12,9 @@ import HandlePost from './pages/HandlePost'
 const router = createBrowserRouter([
   {path:'/', element: <Homepage/>},
   {path:'/posts', element: <ListPost />},
-  {path:'/post/:id', element: <DetailPage />},
-  {path:'/post/:id/edit', element: <HandlePost/>},
-  {path:'/post/create', element: <HandlePost />},
+  {path:'/posts/:id', element: <DetailPage />},
+  {path:'/posts/:id/edit', element: <HandlePost/>},
+  {path:'/posts/create', element: <HandlePost />},
   
 ])
 

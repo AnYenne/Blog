@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import { FormControl} from "@mui/material"
 
 
@@ -20,7 +21,6 @@ const UploadCloudinary = ({onUploadSuccess}) => {
     axios
     .post(cloudinaryUrl, formData)
     .then(res => {
-        console.log(res.data)
         const uploadedUrl = res.data.secure_url;
         if(onUploadSuccess){
             onUploadSuccess(uploadedUrl)

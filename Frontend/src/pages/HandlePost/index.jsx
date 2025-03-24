@@ -1,10 +1,13 @@
-import { Box, Button, TextField } from "@mui/material"
-import axios from "axios";
 import { useEffect, useState } from "react";
+
+import axios from "axios";
 import 'react-quill-new/dist/quill.snow.css';
 import { useLocation, useNavigate, useParams } from "react-router";
+
 import Editor from "../../components/Editor";
 import UploadCloudinary from "../../components/UploadCloudinary";
+
+import { Box, Button, TextField } from "@mui/material"
 
 
 const HandlePost = () => {
@@ -51,18 +54,12 @@ const HandlePost = () => {
     if(beforeEdit === null){
         axios
         .post('http://localhost:3000/api/posts',data)
-        .then(res => {
-            console.log(res);
-            console.log("submit success data")
-        })
+        .then(res => res)
         .catch((error) => console.error(error));
     } else{
         axios
         .put(`http://localhost:3000/api/posts/${id}`,data)
-        .then(res => {
-            console.log(res);
-            console.log("update success data")
-        })
+        .then(res)
         .catch((error) => console.error(error));
         navigation(`/post/${id}`)
     }

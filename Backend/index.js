@@ -1,11 +1,11 @@
+const cors = require('cors')
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 const express = require('express');
 const app = express();
 require('dotenv').config();
 const port = 3000; 
-const cors = require('cors')
-const mongoose = require('mongoose');
 const router = require("../Backend/src/routes/index")
-const bodyParser = require('body-parser')
 //connect database
 const mongoURI = process.env.MONGO_URI
 
