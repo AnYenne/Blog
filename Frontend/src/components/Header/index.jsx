@@ -1,7 +1,8 @@
-import {Stack, Button, AppBar, Toolbar, Typography,Menu, MenuItem,Input, Box} from '@mui/material'
 import { useState } from 'react'
-// import {CatchingPokemonIcon, SearchIcon} from '@mui/icons-material'
+import {Stack, Button, AppBar, Toolbar, Typography,Menu, MenuItem,Input, Box} from '@mui/material'
 import Icon from '@mui/material/Icon'
+
+
 function Header(){
     const menulist = [
         {name: 'menu1',
@@ -62,7 +63,7 @@ function Header(){
         <AppBar position='static' style={{ color:'#1D1D1D', fontFamily:'Nunito'}} >
             <Toolbar sx={{backgroundColor:'#060842'}}>
                 
-                <Typography variant='h5' component='a' href='#' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito', fontSize:'30px'}}>
+                <Typography variant='h5' component='a' href='/' sx={{flexGrow: 1, color: 'orange', textDecoration:'none', fontFamily:'Nunito', fontSize:'30px'}}>
                     Fox Blog
                 </Typography>
 
@@ -116,13 +117,12 @@ function Header(){
                   <Box sx={{display:{xs:'flex', md: 'none'},alignItems:'flex-start', paddingLeft:'14px', flexDirection:'column',backgroundColor:'#060842', height:'300px', width:"100%"}}> 
                   {menulist.map((menu,index) => {
                     return(
-                      <Box>
+                      <Box key={index}>
                         <Button
                         variant='text' 
                         sx={{color:'orange', fontFamily:'Nunito', fontSize:"18px"}}
                         >
                         {menu.name}
-                       
                         </Button>
                         <Box>
                         {menu.submenu.title}

@@ -1,15 +1,20 @@
-import {Button, Typography, Box, Card, CardContent, CardMedia,CardActions, Pagination} from '@mui/material'
 import { useEffect, useState } from 'react'
+
 import axios from 'axios'
+import { Link } from 'react-router'
+
+import {Button, Typography, Box, Card, CardContent, CardMedia,CardActions, Pagination} from '@mui/material'
+
 
 const ListPost = () => {
     const [postsApi,setPostApi] = useState([])
     useEffect(() => {
       axios
-        .get('http://localhost:3000/posts')
+        .get('http://localhost:3000/api/posts')
         .then((response)=> setPostApi(response.data))
         .catch((error) => console.error("error:", error))
     },[])
+
     // const postsApi = [
     //     {
     //         id: "67b8473e4bf548e8a805111c",
@@ -110,12 +115,14 @@ const ListPost = () => {
                           <Box sx={{display:'flex', flexDirection:'colume', alignItems:'center', justifyContent:'space-between', padding:'16px 16px 24px' }}>
                             <Typography>{post.createdAt}</Typography>
                             <CardActions>
-                              <Button 
-                              variant='contained' 
-                              sx={{width:{xs:'200px', lg:'120px'},padding:{xs:'14px 0', md:'none'},backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}
-                              >
-                                read
-                              </Button>
+                              <Link to={`/posts/${post._id}`}>
+                                <Button 
+                                variant='contained' 
+                                sx={{width:{xs:'200px', lg:'120px'},padding:{xs:'14px 0', md:'none'},backgroundColor:'#060842', color:'#FFA500', fontFamily:'Nunito', fontWeight:'600'}}
+                                >
+                                  read
+                                </Button>
+                              </Link>
                             </CardActions>
                           </Box>
                       </Box>
