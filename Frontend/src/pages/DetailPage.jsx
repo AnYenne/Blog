@@ -1,14 +1,16 @@
-import { Box, Typography, Container, Button } from "@mui/material"
-import axios from "axios"
 import { useEffect, useState } from "react"
+
+import axios from "axios"
 import { useNavigate, useParams } from "react-router"
-import ContentWithTOC from "../../components/ContentWithTOC"
+
+import ContentWithTOC from "../components/ContentWithTOC.jsx"
+
+import { Box, Typography, Container, Button } from "@mui/material"
 
 
 function DetailPage() {
     const [data, setData] = useState([])
     const { id } = useParams()
-    const [content, setContent] = useState('')
     const navigation = useNavigate()
 
     useEffect(() => {
@@ -17,13 +19,6 @@ function DetailPage() {
             .then((response) => setData(response.data[0]))
             .catch((error) => console.error('error', error))
     }, [id])
-
-    
-    // useEffect(() => {
-    //     data[0] && setContent(data[0].content)
-    // }, [data])
-
-
     return (
         <Container>
             <Box>
@@ -34,7 +29,7 @@ function DetailPage() {
             {data && (
                 <Box sx={{ display: 'flex', padding: '20px 0px', justifyContent: 'space-between' }}>
                     <Box sx={{ overflow: 'hidden', width: '782px' }}>
-                        <img style={{width:'500px', height:'500px'}} src={data.images[0]} alt="hero"/>
+                        <img style={{width:'500px', height:'500px'}} src={data.images} alt="hero"/>
                         <Typography component='h1' sx={{ lineHeight: '36px', fontSize: { xs: '28px' }, fontWeight: '700' }}> {data.title}</Typography>
                         <Typography component='p'>{data.createdAt}</Typography>
 

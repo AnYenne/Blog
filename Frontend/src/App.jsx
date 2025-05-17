@@ -1,12 +1,13 @@
 import './App.css'
-import Header from './components/Header'
-import Homepage from './pages/Homepage'
-import Footer from './components/Footer'
+import Header from './components/Header.jsx'
+import Homepage from './pages/Homepage.jsx'
+import Footer from './components/Footer.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
-import ListPost from './components/ListPost'
-import DetailPage from './pages/DetailPage'
+import ListPost from './components/ListPost.jsx'
+import DetailPage from './pages/DetailPage.jsx'
 // import CreatePost from './pages/CreatePost'
-import HandlePost from './pages/HandlePost'
+import HandlePost from './pages/HandlePost.jsx'
+import LoginPage from './pages/LoginPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   {path:'/posts/:id', element: <DetailPage />},
   {path:'/posts/:id/edit', element: <HandlePost/>},
   {path:'/posts/create', element: <HandlePost />},
+  {path:'/login', element: <LoginPage />},
   
 ])
 

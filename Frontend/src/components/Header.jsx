@@ -1,6 +1,8 @@
 import { useState } from 'react'
+
 import {Stack, Button, AppBar, Toolbar, Typography,Menu, MenuItem,Input, Box} from '@mui/material'
 import Icon from '@mui/material/Icon'
+import { Link, useNavigate, useNavigation } from 'react-router'
 
 
 function Header(){
@@ -20,18 +22,14 @@ function Header(){
         ]
         },
         {name: 'menu3',
-        submenu: [
-          // {title: 'submenu111', link: 'https:example111'},
-          //   {title: 'submenu2', link: 'https:example2'},
-          //   {title: 'submenu3', link: 'https:example3'},
-          //   {title: 'submenu4', link: 'https:example4'},
-        ]
+        
         },
     ]
    
     const [anchorEl, setAnchorEl] = useState((Array(menulist.length).fill(null)))
     const [toggleSearch, setToggleSearch] = useState(false)
     const [toggleMenu, setToggleMenu] = useState(false)
+
 
     //hover open the submenu on Navbar
     const handleMouseEnter = (event, index) => {
@@ -67,40 +65,6 @@ function Header(){
                     Fox Blog
                 </Typography>
 
-                <Box sx={{ display: "flex", gap: 2, p: 2, bgcolor: "#060842" }}>
-                    {menulist.map((item, index) => (
-                    <Box key={index} sx={{ position: "relative", fontFamily:'Nunito',display:{xs:'none', md:'block'} }}>
-                        <Button
-                        sx={{fontFamily:'Nunito', color:'orange', fontSize:'18px'}}
-                        onMouseEnter={(e) => handleMouseEnter(e, index)}
-                        >
-                      {item.name}
-                        </Button>
-                      <Menu
-                        anchorEl={anchorEl[index]}
-                        open={Boolean(anchorEl[index])} 
-                        onClose={() => handleMouseLeave(index)}
-                        MenuListProps={{
-                          onMouseEnter: () => handleMouseEnter({ currentTarget: anchorEl[index] }, index),
-                          onMouseLeave: () => handleMouseLeave(index),
-                        }}
-                      >
-                        {item.submenu &&  item.submenu.map((sub, i) => (
-                          <MenuItem
-                            sx={{background: '#060842'}}
-                            key={i} onClick={() => handleMouseLeave(index)}>
-                            <Button 
-                            sx={{background: 'transparent',fontFamily:'Nunito', color: 'orange', fontSize:'18px'}} 
-                            variant='text' 
-                            href={sub.link}>
-                              {sub.title}
-                            </Button>
-                          </MenuItem>
-                        ))}
-                      </Menu>
-                    </Box>
-                  ))}
-                </Box>
                 
               
                 <Stack direction='row' spacing={2} sx={{display: {xs: 'block', md:'none'}}}>
