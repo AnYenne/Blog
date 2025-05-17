@@ -1,4 +1,4 @@
-import ListPost from "../../components/ListPost"
+import ListPost from "../components/ListPost.jsx"
 
 import {Typography, Box, Stack, Icon, Button} from "@mui/material"
 

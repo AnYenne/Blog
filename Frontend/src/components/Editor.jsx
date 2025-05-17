@@ -21,7 +21,7 @@ const  Editor = ({onChange, content}) =>  {
             {indent:'+1' }
             ],
             [ 'link',
-                'image'],
+            'image'],
             ['clean'],
            
         ]
@@ -30,7 +30,7 @@ const  Editor = ({onChange, content}) =>  {
     return(
         <ReactQuill
             theme="snow" 
-            value={content} 
+            value={content}
             onChange={onChange}
             modules={modules} 
         />
