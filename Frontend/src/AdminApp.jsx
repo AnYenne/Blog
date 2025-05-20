@@ -7,26 +7,25 @@ import ListPost from './components/ListPost.jsx'
 import DetailPage from './pages/DetailPage.jsx'
 // import CreatePost from './pages/CreatePost'
 import HandlePost from './pages/HandlePost.jsx'
+import AdminLoginPage from './pages/AdminLoginPage.jsx'
 
-
-const router = createBrowserRouter([
+const adminRouter = createBrowserRouter([
   {path:'/', element: <Homepage/>},
   {path:'/posts', element: <ListPost />},
   {path:'/posts/:id', element: <DetailPage />},
   {path:'/posts/:id/edit', element: <HandlePost/>},
   {path:'/posts/create', element: <HandlePost />},
+  {path:'/login', element: <AdminLoginPage />},
   
 ])
 
-
-function App() {
-
+function AdminApp() {
   return (
-      <div className='App'>
+      <div className='AdminApp'>
         <Header></Header>
-           <RouterProvider router={router}/>
+          <RouterProvider router={adminRouter}/>
         <Footer></Footer>
       </div>  
   )
 }
-export default App
+export default AdminApp

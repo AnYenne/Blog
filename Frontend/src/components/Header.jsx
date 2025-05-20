@@ -65,8 +65,6 @@ function Header(){
                     Fox Blog
                 </Typography>
 
-                
-              
                 <Stack direction='row' spacing={2} sx={{display: {xs: 'block', md:'none'}}}>
                     <Icon
                     onClick ={()=> handleMenuXs(toggleMenu)}

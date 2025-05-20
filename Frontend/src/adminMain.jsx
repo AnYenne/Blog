@@ -1,13 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import AdminApp from './AdminApp.jsx'
 
-const appType = import.meta.env.VITE_APP_TYPE;
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
-   <App></App>
+  <AdminApp/>
   // </StrictMode>,
 )
