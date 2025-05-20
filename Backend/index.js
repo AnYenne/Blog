@@ -1,6 +1,7 @@
 const cors = require('cors')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const express = require('express');
 
 const app = express();
@@ -20,6 +21,10 @@ mongoose.connect(mongoURI)
 app.use(cors())
 
 app.use(bodyParser.json())
+app.use(cookieParser())
+
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
 //route
 router(app)
