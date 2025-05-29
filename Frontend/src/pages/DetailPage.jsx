@@ -10,6 +10,7 @@ import { Box, Typography, Container, Button } from "@mui/material"
 
 function DetailPage() {
     const [data, setData] = useState([])
+    const [login, setLogin] = useState(true)
     const { id } = useParams()
     const navigation = useNavigate()
 
@@ -19,13 +20,16 @@ function DetailPage() {
             .then((response) => setData(response.data[0]))
             .catch((error) => console.error('error', error))
     }, [id])
+
+    
+
     return (
         <Container>
-            <Box>
+            {/* {login && (<Box>
                 <Button variant="outlined" sx={{ margin: '10px 0px', color: 'navy' }} onClick={() => navigation('edit', { state: { postData: data } })}>
                     edit
                 </Button>
-            </Box>
+            </Box>)} */}
             {data && (
                 <Box sx={{ display: 'flex', padding: '20px 0px', justifyContent: 'space-between' }}>
                     <Box sx={{ overflow: 'hidden', width: '782px' }}>

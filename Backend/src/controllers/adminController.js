@@ -1,10 +1,10 @@
-const {generateToken, generateRefreshToken} = require('../utils/jwt')
-
 const { default: mongoose } = require('mongoose');
-const Admin = require('../models/admin');
+const { verify } = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cookie = require('cookie');
-const { verify } = require('jsonwebtoken');
+
+const {generateToken, generateRefreshToken} = require('../utils/jwt')
+const Admin = require('../models/admin');
 const {verifyToken} = require('../controllers/middlewareController')
 
 

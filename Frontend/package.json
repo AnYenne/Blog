@@ -4,9 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:user": "vite --port 5174 --open",
-    "start:admin": "vite --port 8080 --open",
-    "start:all": "concurrently \"npm run start:user\" \"npm run start:admin\" ",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
