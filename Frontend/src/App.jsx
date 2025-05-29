@@ -2,30 +2,47 @@ import './App.css'
 import Header from './components/Header.jsx'
 import Homepage from './pages/Homepage.jsx'
 import Footer from './components/Footer.jsx'
-import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import {createBrowserRouter,RouterProvider, useLocation} from 'react-router-dom'
 import ListPost from './components/ListPost.jsx'
 import DetailPage from './pages/DetailPage.jsx'
 // import CreatePost from './pages/CreatePost'
-import HandlePost from './pages/HandlePost.jsx'
+import AdminHandlePost from './pages/AdminHandlePost.jsx'
+import AdminLoginPage from './pages/AdminLoginPage.jsx'
+import AdminDashboard from './pages/AdminDashboard.jsx'
+import AdminPostList from './pages/AdminPostList.jsx'
+import useAuth from './hooks/useAuth.jsx'
 
 
 const router = createBrowserRouter([
   {path:'/', element: <Homepage/>},
   {path:'/posts', element: <ListPost />},
+  {path:'/admin/posts', element: <AdminPostList />},
   {path:'/posts/:id', element: <DetailPage />},
-  {path:'/posts/:id/edit', element: <HandlePost/>},
-  {path:'/posts/create', element: <HandlePost />},
+  {path: '/admin', element: <AdminDashboard />},
+  {path: '/admin/create/post', element: <AdminHandlePost />},
+  {path: '/admin/dashboard', element: <AdminDashboard />},
+  {path:'/admin/posts/:id/edit', element: <AdminHandlePost/>},
+  {path:'/admin/login', element: <AdminLoginPage />},
+],
+  { basename: '/' });
+
   
-])
 
+  function App() {
 
-function App() {
+    const {auth} = useAuth()
 
-  return (
+    const isAdminRoute = location.pathname.startsWith('/admin');
+
+    if (isAdminRoute && !auth && location.pathname !== '/admin/login') {
+      window.location.replace('/admin/login');
+      return null;
+    }
+    return (
       <div className='App'>
-        <Header></Header>
-           <RouterProvider router={router}/>
-        <Footer></Footer>
+          {!isAdminRoute && <Header></Header>}
+             <RouterProvider router={router}/>
+          {!isAdminRoute && <Footer></Footer>}
       </div>  
   )
 }

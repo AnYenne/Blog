@@ -7,6 +7,6 @@ const adminController = require("../controllers/adminController");
 
 router.get('/',middlewareController.verifyToken, AdminController.getDataAdmin)
 router.post('/login/', AdminController.loginAdmin)
-router.post('/auth/refresh', middlewareController.requestRefreshToken)
+router.post('/auth/refresh',middlewareController.verifyToken, middlewareController.requestRefreshToken)
 router.post('/logout', middlewareController.verifyToken, adminController.logoutAdmin)
 module.exports = router
